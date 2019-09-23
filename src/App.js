@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Search from './Search/Search';
 import Filter from './Filter/Filter';
-import BookList from './BookList/BookList';
+// import BookList from './BookList/BookList';
 
 export default class App extends Component {
   constructor(props) {
@@ -20,8 +20,8 @@ export default class App extends Component {
         </header>
         <Search />
         <Filter />
-        <BookList 
-          books={this.state.books}/>
+        {/* <BookList  */}
+          {/* books={this.state.books}/> */}
       </div>
     );
   }
