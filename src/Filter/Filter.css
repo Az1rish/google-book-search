@@ -1,0 +1,10 @@
+.filter_form {
+    background-color: lightgrey;
+    min-height: 5vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+fieldset {
+    border: 0;
+}
