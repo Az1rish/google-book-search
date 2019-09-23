@@ -33,8 +33,8 @@ export default class App extends Component {
   }
 
 
-  onSearch(e, search) {
-    e.preventDefault();
+  onSearch(search) {
+  
     this.setState({
       query: search
     });
