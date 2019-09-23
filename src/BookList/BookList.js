@@ -7,7 +7,7 @@ export default class BookList extends Component {
         const books = this
             .props
             .books
-            .map((book, i) => <Books {...book} key={i}/>);
+            .map((book, i) => <Books {...books} key={i}/>);
         return (
             <div className='booklist'>
                 {books}
