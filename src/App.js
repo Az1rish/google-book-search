@@ -33,7 +33,11 @@ export default class App extends Component {
   }
 
 
-  componentDidMount() {
+  onSearch(search) {
+    this.setState({
+      query: search
+    });
+  
     const url = 'https://www.googleapis.com/books/v1/volumes?';
     const options = {
       method: 'GET',
@@ -67,11 +71,7 @@ export default class App extends Component {
   }
   
 
-  onSearch(search) {
-    this.setState({
-      query: search
-    })
-  }
+  
 
   render() {
     return (
