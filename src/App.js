@@ -46,7 +46,13 @@ export default class App extends Component {
         });
       });
     }
-}
+  
+
+  onSearch(search) {
+    this.setState({
+      query: search
+    })
+  }
 
   render() {
     return (
@@ -54,7 +60,8 @@ export default class App extends Component {
         <header className="App-header">
           <h1>Google Book Search</h1>
         </header>
-        <Search />
+        <Search 
+          onSearch={search => this.onSearch(search)}/>
         <Filter />
         <BookList 
           books={this.state.books}/>

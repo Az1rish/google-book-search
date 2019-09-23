@@ -12,7 +12,11 @@ export default class Search extends Component {
                     name='search'
                     id='search'
                     placeholder='Title, Author, keyword, etc.'/>
-                    <button type='submit'>Submit</button>
+                    <button 
+                        type='submit'
+                        onClick={e => this.props.onSearch(e.target.value)}>
+                            Submit
+                    </button>
                 </fieldset>
             </form>
         )
