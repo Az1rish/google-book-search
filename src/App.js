@@ -21,7 +21,7 @@ export default class App extends Component {
       headers: {
         "key": "AIzaSyAcbVYDqYMoQ4oWJP-O2u_0Xf4j3rLtWPs",
         "Content-type": "application/json",
-        "q": {this.state.query}
+        "q": this.state.query
       }
     };
 
@@ -45,7 +45,7 @@ export default class App extends Component {
           error: err.message
         });
       });
-    }
+  }
   
 
   onSearch(search) {
