@@ -33,18 +33,19 @@ export default class App extends Component {
   }
 
 
-  onSearch(search) {
+  onSearch(e, search) {
+    e.preventDefault();
     this.setState({
       query: search
     });
   
-    const url = 'https://www.googleapis.com/books/v1/volumes?';
+    const url = `https://www.googleapis.com/books/v1/volumes?q=`+this.state.query;
     const options = {
       method: 'GET',
       headers: {
         "key": "AIzaSyAcbVYDqYMoQ4oWJP-O2u_0Xf4j3rLtWPs",
         "Content-type": "application/json",
-        "q": this.state.query
+        // "q": this.state.query
       }
     };
 
