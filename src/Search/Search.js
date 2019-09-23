@@ -2,26 +2,6 @@ import React, { Component } from 'react';
 import './Search.css';
 
 export default class Search extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            value: ''
-        };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(userInput) {
-        this.setState({
-            value: userInput
-        });
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-        const searchWord = this.state.value;
-        console.log(searchWord);
-    }
     render() {
         return (
             <form 
@@ -34,11 +14,10 @@ export default class Search extends Component {
                     name='search'
                     id='search'
                     placeholder='Title, Author, keyword, etc.'
-                    value={this.state.value}
-                    onChange={(e) => this.handleChange(e.target.value)}/>
+                    value={this.props.query}
+                    onChange={(e) => this.props.handleChange(e.target.value)}/>
                     <button 
-                        type='submit'
-                        onClick={e => this.props.onSearch(e.target.value)}>
+                        type='submit'>
                             Submit
                     </button>
                 </fieldset>

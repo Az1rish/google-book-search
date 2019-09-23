@@ -28,24 +28,29 @@ export default class App extends Component {
           }
         }}
       ],
-      query: 'computers'
+      query: ''
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-
-  onSearch(search) {
-  
+  handleChange(userInput) {
     this.setState({
-      query: search
+        query: userInput
     });
-  
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const searchWord = this.state.query;
+    console.log(searchWord);
     const url = `https://www.googleapis.com/books/v1/volumes?q=`+this.state.query;
     const options = {
       method: 'GET',
       headers: {
         "key": "AIzaSyAcbVYDqYMoQ4oWJP-O2u_0Xf4j3rLtWPs",
         "Content-type": "application/json",
-        // "q": this.state.query
+      
       }
     };
 
@@ -70,9 +75,6 @@ export default class App extends Component {
         });
       });
   }
-  
-
-  
 
   render() {
     return (
@@ -81,7 +83,9 @@ export default class App extends Component {
           <h1>Google Book Search</h1>
         </header>
         <Search 
-          onSearch={search => this.onSearch(search)}/>
+          query={this.state.query}
+          handleSubmit={e => this.handleSubmit(e)}
+          handleChange={userInput => this.handleChange(userInput)}/>
         <Filter />
         <BookList 
           books={this.state.books}/>
