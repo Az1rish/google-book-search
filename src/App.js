@@ -8,7 +8,26 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: [],
+      books: [
+        {
+        items: {
+          volumeInfo: {
+            title: 'Generic Title',
+            authors: "Generic Author",
+            imageLinks: {
+              thumbnail: 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwiV8pmTsufkAhVHnp4KHSfmARYQjRx6BAgBEAQ&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Ffree&psig=AOvVaw041MAFfJItzJcC2UkD5xjG&ust=1569343465164023'
+            },
+          },
+          saleInfo: {
+            retailPrice: {
+              amount: '50.0'
+            }
+          },
+          searchInfo: {
+            textSnippet: "Generic summary"
+          }
+        }}
+      ],
       query: 'computers'
     };
   }
@@ -20,7 +39,7 @@ export default class App extends Component {
       method: 'GET',
       headers: {
         "key": "AIzaSyAcbVYDqYMoQ4oWJP-O2u_0Xf4j3rLtWPs",
-        // "Content-type": "application/json",
+        "Content-type": "application/json",
         "q": this.state.query
       }
     };
