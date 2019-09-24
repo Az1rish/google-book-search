@@ -44,14 +44,9 @@ export default class App extends Component {
     e.preventDefault();
     const searchWord = this.state.query;
     console.log(searchWord);
-    const url = `https://www.googleapis.com/books/v1/volumes?q=`+this.state.query;
+    const url = `https://www.googleapis.com/books/v1/volumes?key=AIzaSyAcbVYDqYMoQ4oWJP-O2u_0Xf4j3rLtWPs&q=` + this.state.query;
     const options = {
       method: 'GET',
-      headers: {
-        "key": "AIzaSyAcbVYDqYMoQ4oWJP-O2u_0Xf4j3rLtWPs",
-        "Content-type": "application/json",
-      
-      }
     };
 
     fetch(url, options)
