@@ -4,16 +4,17 @@ import Books from '../Books/Books';
 
 export default class BookList extends Component {
     render() {
+        console.log(this.props.books)
         const books = this
             .props
             .books
             .map((book, i) => <Books
                 key={i}
-                thumbnail={book.items.volumeInfo.imageLinks.thumbnail}
-                title={book.items.volumeInfo.title}
-                author={book.items.volumeInfo.authors}
-                price={book.items.saleInfo.retailPrice.amount}
-                summary={book.items.searchInfo.textSnippet}/>);
+                thumbnail={book.volumeInfo.imageLinks.thumbnail}
+                title={book.volumeInfo.title}
+                author={book.volumeInfo.authors}
+                price={book.saleInfo.retailPrice.amount}
+                summary={book.searchInfo.textSnippet}/>);
         return (
             <div className='booklist'>
                 {books}

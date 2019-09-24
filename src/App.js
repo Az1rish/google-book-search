@@ -8,8 +8,8 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: [{
-        items: {
+      books: [
+        {
           volumeInfo: {
             title: 'Generic Title',
             authors: "Generic Author",
@@ -26,7 +26,7 @@ export default class App extends Component {
             textSnippet: "Generic summary"
           }
         }
-      }],
+      ],
       query: ''
     };
     this.handleChange = this.handleChange.bind(this);
@@ -39,7 +39,7 @@ export default class App extends Component {
     });
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     const searchWord = this.state.query;
     console.log(searchWord);
@@ -58,9 +58,9 @@ export default class App extends Component {
       })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        console.log(data.items);
         this.setState({
-          books: data,
+          books: data.items,
           error: null
         });
       })
@@ -72,6 +72,7 @@ export default class App extends Component {
   }
 
   render() {
+    
     return (
       <div className="App">
         <header className="App-header">
