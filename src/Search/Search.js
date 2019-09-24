@@ -5,8 +5,7 @@ export default class Search extends Component {
     render() {
         return (
             <form 
-                className="search_form"
-                >
+                className="search_form">
                 <fieldset className='search'>
                     <label htmlFor='search'>Search: </label>
                     <input
