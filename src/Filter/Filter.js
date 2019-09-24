@@ -5,7 +5,7 @@ export default class Filter extends Component {
     changeBookType(value) {
         console.log(value);
         if(value==="no_filter") {
-            this.props.bookType(null);
+            this.props.bookType('');
         } else {
             this.props.bookType(value);
         }
@@ -26,13 +26,13 @@ export default class Filter extends Component {
                     <select 
                         name='book' 
                         id='book'
-                        onChange={e => this.changeBookType(e.target.value)}>
+                        onChange={(e) => this.changeBookType(e.target.value)}>
                         <option value='no_filter'>No filter</option>
                         <option value='partial'>Partial</option>
                         <option value='full'>Full</option>
                         <option value='free-ebooks'>Free ebooks</option>
                         <option value='paid-ebooks'>Paid ebooks</option>
-                        <option value='ebook'>ebooks</option>
+                        <option value='ebooks'>ebooks</option>
                     </select>
                 </fieldset>
             </form>

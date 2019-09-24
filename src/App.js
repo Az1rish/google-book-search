@@ -22,15 +22,7 @@ export default class App extends Component {
     });
   }
 
-  setFilter(selected) {
-    this.setState({
-      selected
-    });
-    console.log(this.state.selected);
-  }
-
-  handleSubmit = (e) => {
-    e.preventDefault();
+  request() {
     const searchWord = this.state.query;
     console.log(searchWord);
 
@@ -39,7 +31,8 @@ export default class App extends Component {
       : '';
     console.log(filter);
 
-    const url =  `https://www.googleapis.com/books/v1/volumes?key=AIzaSyAcbVYDqYMoQ4oWJP-O2u_0Xf4j3rLtWPs&q=` + searchWord + filter;
+    const key = '&key=AIzaSyAcbVYDqYMoQ4oWJP-O2u_0Xf4j3rLtWPs';
+    const url =  `https://www.googleapis.com/books/v1/volumes?q=` + searchWord + filter + key;
     const options = {
       method: 'GET',
       dataType: 'json'
@@ -67,8 +60,19 @@ export default class App extends Component {
       });
   }
 
-  render() {
-    
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.request();
+  }
+
+  setFilter = (selected) => {
+    this.setState({
+      filter: selected
+    }, () => this.request());
+    ;
+  }
+
+  render() {  
     return (
       <div className="App">
         <header className="App-header">
