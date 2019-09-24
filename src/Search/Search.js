@@ -5,7 +5,8 @@ export default class Search extends Component {
     render() {
         return (
             <form 
-                className="search_form">
+                className="search_form"
+                onSubmit={(e) => this.props.handleSubmit(e)}>
                 <fieldset className='search'>
                     <label htmlFor='search'>Search: </label>
                     <input
@@ -16,8 +17,7 @@ export default class Search extends Component {
                     value={this.props.query}
                     onChange={(e) => this.props.handleChange(e.target.value)}/>
                     <button 
-                        type='submit'
-                        onSubmit={(e) => this.props.handleSubmit(e)}>
+                        type='submit'>
                             Submit
                     </button>
                 </fieldset>
