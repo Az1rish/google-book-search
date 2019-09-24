@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import './Filter.css';
 
 export default class Filter extends Component {
+    changeBookType(value) {
+        if(value==="no_filter") {
+            this.props.bookType(null);
+        } else {
+            this.props.bookType(value);
+        }
+    }
     render() {
         return (
             <form className='filter_form'>
@@ -15,7 +22,10 @@ export default class Filter extends Component {
                 </fieldset>
                 <fieldset className='book'>
                     <label htmlFor='book'>Book type: </label>
-                    <select name='book' id='book'>
+                    <select 
+                        name='book' 
+                        id='book'
+                        onChange={e => this.changeBookType(e.target.value)}>
                         <option value='no_filter'>No filter</option>
                         <option value='partial'>Partial</option>
                         <option value='full'>Full</option>

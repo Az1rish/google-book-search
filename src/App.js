@@ -8,26 +8,9 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: [
-        {
-          volumeInfo: {
-            title: 'Generic Title',
-            authors: "Generic Author",
-            imageLinks: {
-              thumbnail: 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwiV8pmTsufkAhVHnp4KHSfmARYQjRx6BAgBEAQ&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Ffree&psig=AOvVaw041MAFfJItzJcC2UkD5xjG&ust=1569343465164023'
-            },
-          },
-          saleInfo: {
-            retailPrice: {
-              amount: '50.0'
-            }
-          },
-          searchInfo: {
-            textSnippet: "Generic summary"
-          }
-        }
-      ],
-      query: ''
+      books: [],
+      query: '',
+      filter: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,16 +22,28 @@ export default class App extends Component {
     });
   }
 
+  setFilter(selected) {
+    this.setState({
+      selected
+    })
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const searchWord = this.state.query;
     console.log(searchWord);
-    const url =  `https://www.googleapis.com/books/v1/volumes?key=AIzaSyAcbVYDqYMoQ4oWJP-O2u_0Xf4j3rLtWPs&q=` + searchWord;
+
+    const filter = this.state.filter !== '' 
+      ? '&filter=' + this.state.filter 
+      : '';
+    console.log(filter);
+
+    const url =  `https://www.googleapis.com/books/v1/volumes?key=AIzaSyAcbVYDqYMoQ4oWJP-O2u_0Xf4j3rLtWPs&q=` + searchWord + filter;
     const options = {
       method: 'GET',
       dataType: 'json'
     };
-
+    console.log(url);
     fetch(url, options)
       .then(res => {
         if(!res.ok) {
@@ -82,7 +77,9 @@ export default class App extends Component {
           query={this.state.query}
           handleSubmit={e => this.handleSubmit(e)}
           handleChange={userInput => this.handleChange(userInput)}/>
-        <Filter />
+        <Filter 
+          bookType={selected => this.setFilter(selected)}
+          />
         <BookList 
           books={this.state.books}/>
       </div>
