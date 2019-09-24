@@ -25,7 +25,8 @@ export default class App extends Component {
   setFilter(selected) {
     this.setState({
       selected
-    })
+    });
+    console.log(this.state.selected);
   }
 
   handleSubmit = (e) => {

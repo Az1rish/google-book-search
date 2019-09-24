@@ -3,6 +3,7 @@ import './Filter.css';
 
 export default class Filter extends Component {
     changeBookType(value) {
+        console.log(value);
         if(value==="no_filter") {
             this.props.bookType(null);
         } else {
