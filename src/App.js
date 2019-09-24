@@ -43,11 +43,10 @@ export default class App extends Component {
     e.preventDefault();
     const searchWord = this.state.query;
     console.log(searchWord);
-    const url = `https://cors-anywhere.herokuapp.com/www.googleapis.com/books/v1/volumes?q=` + searchWord;
+    const url =  `https://www.googleapis.com/books/v1/volumes?key=AIzaSyAcbVYDqYMoQ4oWJP-O2u_0Xf4j3rLtWPs&q=` + searchWord;
     const options = {
       method: 'GET',
-      dataType: 'json',
-      key: 'AIzaSyAcbVYDqYMoQ4oWJP-O2u_0Xf4j3rLtWPs'
+      dataType: 'json'
     };
 
     fetch(url, options)
