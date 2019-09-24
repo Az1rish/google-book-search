@@ -14,12 +14,15 @@ export default class Filter extends Component {
         return (
             <form className='filter_form'>
                 <fieldset className='print'>
-                <label htmlFor='print'>Print type: </label>
-                <select name='print' id='print'>
-                    <option value='all'>All</option>
-                    <option value='books'>books</option>
-                    <option value='magazines'>Magazines</option>
-                </select>
+                    <label htmlFor='print'>Print type: </label>
+                    <select 
+                        name='print' 
+                        id='print'
+                        onChange={e => this.props.printType(e.target.value)}>
+                        <option value='all'>All</option>
+                        <option value='books'>books</option>
+                        <option value='magazines'>Magazines</option>
+                    </select>
                 </fieldset>
                 <fieldset className='book'>
                     <label htmlFor='book'>Book type: </label>

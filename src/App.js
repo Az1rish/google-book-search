@@ -10,7 +10,8 @@ export default class App extends Component {
     this.state = {
       books: [],
       query: '',
-      filter: ''
+      filter: '',
+      printType: 'all'
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,8 +32,10 @@ export default class App extends Component {
       : '';
     console.log(filter);
 
+    const printType = '&printType=' + this.state.printType;
+
     const key = '&key=AIzaSyAcbVYDqYMoQ4oWJP-O2u_0Xf4j3rLtWPs';
-    const url =  `https://www.googleapis.com/books/v1/volumes?q=` + searchWord + filter + key;
+    const url =  `https://www.googleapis.com/books/v1/volumes?q=` + searchWord + filter + printType+ key;
     const options = {
       method: 'GET',
       dataType: 'json'
@@ -69,7 +72,12 @@ export default class App extends Component {
     this.setState({
       filter: selected
     }, () => this.request());
-    ;
+  }
+
+  setPrintType = (selected) => {
+    this.setState({
+      printType: selected
+    }, () => this.request());
   }
 
   render() {  
@@ -84,7 +92,7 @@ export default class App extends Component {
           handleChange={userInput => this.handleChange(userInput)}/>
         <Filter 
           bookType={selected => this.setFilter(selected)}
-          />
+          printType={selected => this.setPrintType(selected)}/>
         <BookList 
           books={this.state.books}/>
       </div>
