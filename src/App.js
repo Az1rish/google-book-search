@@ -8,8 +8,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: [
-        {
+      books: [{
         items: {
           volumeInfo: {
             title: 'Generic Title',
@@ -26,8 +25,8 @@ export default class App extends Component {
           searchInfo: {
             textSnippet: "Generic summary"
           }
-        }}
-      ],
+        }
+      }],
       query: ''
     };
     this.handleChange = this.handleChange.bind(this);
@@ -44,7 +43,7 @@ export default class App extends Component {
     e.preventDefault();
     const searchWord = this.state.query;
     console.log(searchWord);
-    const url = `https://www.googleapis.com/books/v1/volumes?key=AIzaSyAcbVYDqYMoQ4oWJP-O2u_0Xf4j3rLtWPs&q=` + this.state.query;
+    const url = `https://www.googleapis.com/books/v1/volumes?key=AIzaSyAcbVYDqYMoQ4oWJP-O2u_0Xf4j3rLtWPs&q=` + searchWord;
     const options = {
       method: 'GET',
     };
