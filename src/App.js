@@ -25,12 +25,10 @@ export default class App extends Component {
 
   request() {
     const searchWord = this.state.query;
-    console.log(searchWord);
 
     const filter = this.state.filter !== '' 
       ? '&filter=' + this.state.filter 
       : '';
-    console.log(filter);
 
     const printType = '&printType=' + this.state.printType;
 
@@ -38,9 +36,9 @@ export default class App extends Component {
     const url =  `https://www.googleapis.com/books/v1/volumes?q=` + searchWord + filter + printType+ key;
     const options = {
       method: 'GET',
-      dataType: 'json'
+      dataType: 'json',
     };
-    console.log(url);
+    
     fetch(url, options)
       .then(res => {
         if(!res.ok) {
@@ -50,7 +48,6 @@ export default class App extends Component {
       })
       .then(res => res.json())
       .then(data => {
-        console.log(data.items);
         this.setState({
           books: data.items,
           error: null
